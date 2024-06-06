@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "predeploy":"ng run build",
+    "deploy":"gh-pages -d build",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
