@@ -1,0 +1,17 @@
+<header>
+  <div class="container">
+    <div class="logo" (click)="goToHome()">
+      <h1 class="header-title" [ngClass]="headerClass">Demo App</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+        <li><a routerLink="/jobs" routerLinkActive="active">Jobs</a></li>
+        <li><a routerLink="/clients" routerLinkActive="active">Clients</a></li>
+        <li><a routerLink="/employers" routerLinkActive="active">Employers</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

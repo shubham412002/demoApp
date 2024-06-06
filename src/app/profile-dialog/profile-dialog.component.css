@@ -1,0 +1,21 @@
+
+.dialog-header{
+    height: 5rem;
+    background: cyan;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+mat-dialog-content{
+    margin: 0;
+}
+
+.mat-dialog-actions{
+    padding: 12px;
+}
+
+.upload-btn {
+    color: aqua;
+}

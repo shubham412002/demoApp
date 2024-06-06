@@ -1,0 +1,109 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 15rem;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer-content {
+    background: black;
+    padding: 15px;
+    position: relative;
+}
+
+.footer-content h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.subscription-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::ng-deep .subscription-form mat-form-field .mat-form-field-wrapper .mat-form-field-flex {
+    border-radius: 5px;
+    border: 2px solid cyan;
+}
+
+::ng-deep .mat-form-field-underline .mat-form-field-ripple {
+    background-color: cyan;
+}
+
+.subscription-form button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+
+.subscription-form button i {
+    margin: 0;
+}
+
+.subscription-form button:hover {
+    background-color: #0056b3;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 5px;
+}
+
+.mail-text {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #bbb;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.mat-input-element {
+    font-size: 1.6rem;
+}
+
+.mat-form-field-label {
+    font-size: 1.2rem;
+}
+
+
+.footer-content::before,
+.footer-content::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: repeating-linear-gradient(45deg,
+            rgb(25, 170, 227),
+            rgb(131, 215, 216),
+            rgb(77, 136, 134),
+            rgb(25, 170, 227),
+            rgb(131, 215, 216),
+            rgb(77, 136, 134));
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.footer-content::before {
+    top: 0;
+}
+
+.footer-content::after {
+    bottom: 0;
+}

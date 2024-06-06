@@ -1,1 +1,125 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+/* @import '~@angular/material/theming'; */
+
+/* // Include the common styles for Angular Material. */
+/* @include mat-core();
+
+// Define the primary, accent, and warn palettes.
+$primary: mat-palette($mat-cyan);
+$accent: mat-palette($mat-amber);
+$warn: mat-palette($mat-red);
+
+// Create the theme object.
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Include the Angular Material theme styles.
+@include angular-material-theme($theme);
+
+// Optionally include typography styles.
+@include angular-material-typography($theme);
+
+// Include Material Icons.
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+
+
+/* // Include the theme styles */
+@include angular-material-theme($custom-theme);
+
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body { 
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+}
+
+  *, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+        list-style: none;
+    }
+}
+
+.full-height{
+    height: 100%;
+}
+
+
+.full-width{
+    width: 100%;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+
+.mat-form-field-outline {
+    background-color: white;
+}
+
+.mat-checkbox-layout {
+    font-size: 13px;
+}
+
+mat-dialog-container{
+    padding: 0 !important;
+}
+.custom-dialog{
+    &-header{
+      display: flex !important;
+      align-items: center; 
+      justify-content: space-between;
+      padding: 2rem 2.4rem !important;
+  
+      &__title{
+        width: 80%;
+      }
+  
+      &__action{
+        width: 20%; 
+        display: flex; 
+        justify-content: flex-end
+      }
+    }
+  }
+  .mat-mdc-dialog-actions {
+    padding: 1rem 2.4rem !important;
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: space-between !important;
+  }
+
+app-profile-dialog{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-dialog-content {
+    width: 100%;
+    margin: 0;
+}
+

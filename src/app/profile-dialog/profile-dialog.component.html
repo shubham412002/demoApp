@@ -1,0 +1,153 @@
+
+<div mat-dialog-title  class="dialog-header">
+  <div class="custom-dialog-header-title">
+      <h3 style="color: white;">Register</h3>
+  </div>
+
+  <div class="custom-dialog-header-action">
+      <button mat-icon-button mat-dialog-close color="warn" aria-label="Close">
+          <mat-icon>cancel</mat-icon>
+      </button>
+  </div>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div style="display: flex;">
+    <div style="margin-right: 20px;display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;">
+        <img [src]="registrationForm.get('photo')?.value || '../../assets/images/user.jpg'" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%;" />
+        <input type="file" id="fileInput" accept="image/*" style="display: none;" (change)="uploadPhoto($event)">
+      <button class="upload-btn" (click)="onFileSelected()" mat-button>Upload your photo</button>
+    </div>
+    <div style="flex-grow: 1;">
+      <form style="display: flex;flex-direction: column;width: 100%; gap: 1rem;" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName"  placeholder="First Name" required>
+          <mat-error *ngIf="registrationForm.get('firstName').hasError('required')">
+            First name is required.
+          </mat-error>
+          <mat-error *ngIf="registrationForm.get('firstName').hasError('pattern')">
+            Only alphabetic characters are allowed and the length should not exceed 20 characters.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Last Name" required>
+          <mat-error *ngIf="registrationForm.get('lastName').hasError('required')">
+            Last name is required.
+          </mat-error>
+          <mat-error *ngIf="registrationForm.get('lastName').hasError('pattern')">
+            Only alphabetic characters are allowed .
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Email" required>
+          <mat-error *ngIf="registrationForm.get('email').hasError('required')">
+            Email is required.
+          </mat-error>
+          <mat-error *ngIf="registrationForm.get('email').hasError('email')">
+            Please enter valid email.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Phone number</mat-label>
+          <input matInput formControlName="phone" placeholder="Phone" maxlength="10" required>
+          <mat-error *ngIf="registrationForm.get('phone').hasError('required')">
+            Phone number is required.
+          </mat-error>
+          <mat-error *ngIf="registrationForm.get('phone').hasError('pattern')">
+            Phone number must be exactly 10 digits long and contain only numeric characters.
+          </mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline" class="full-width"> -->
+          <div style="display: flex; align-items: center;gap: 3rem;">
+            <mat-label>Age</mat-label>
+            20<mat-slider  [matTooltip]="this.registrationForm.get('age').value"
+            [matTooltipPosition]="'above'" formControlName="age" min="20" max="60" step="1" thumbLabel tickInterval="2"></mat-slider>60   
+          </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Country</mat-label>
+          <mat-select formControlName="country" (selectionChange)="onCountryChange($event.value)" required>
+            <mat-option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registrationForm.get('country').hasError('required')">
+            Country is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>State</mat-label>
+          <mat-select formControlName="state" required>
+            <mat-option *ngFor="let state of states" [value]="state.id">{{ state.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registrationForm.get('state').hasError('required')">
+            State is required.
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Address Type</mat-label>
+          <mat-select formControlName="addressType" (selectionChange)="onSelectionChange($event)" required>
+            <mat-option value="home">Home</mat-option>
+            <mat-option value="company">Company</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registrationForm.get('addressType').hasError('required')">
+            Address Type is required.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- if home selected -->
+        <mat-form-field appearance="outline" class="full-width" *ngIf="registrationForm.get('addressType').value === 'home'">
+          <mat-label>Address 1</mat-label>
+          <input matInput formControlName="address1" placeholder="Address1" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width" *ngIf="registrationForm.get('addressType').value === 'home'">
+          <mat-label>Address 2</mat-label>
+          <input matInput formControlName="address2" placeholder="Address2">
+        </mat-form-field>
+
+        <!-- if company is selected -->
+        <mat-form-field appearance="outline" class="full-width" *ngIf="registrationForm.get('addressType').value === 'company'">
+          <mat-label>Company Address 1</mat-label>
+          <input matInput formControlName="companyAddress1" placeholder="Address1" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width" *ngIf="registrationForm.get('addressType').value === 'company'">
+          <mat-label>Company Address 2</mat-label>
+          <input matInput formControlName="companyAddress2" placeholder="Address2">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-chip-list full-width">
+          <mat-label>Hobbies</mat-label>
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let tag of tagsFormArray.controls; let i = index" [selectable]="selectable" [removable]="removable" (removed)="remove(tag.value)">
+              {{ tag.value }}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </mat-form-field>
+        
+        <div>
+          <mat-checkbox formControlName="subscribe">Subscribe to newsletter</mat-checkbox>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" (click)="onSubmit() " cdkFocusInitial [disabled]="this.registrationForm.invalid" type="submit">Submit</button>
+</mat-dialog-actions>

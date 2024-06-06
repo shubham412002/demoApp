@@ -1,0 +1,65 @@
+.header-search {
+    position: relative;
+    height: 30.5rem;
+    overflow: hidden;
+}
+
+.header-search::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('../../assets/images/portalImg.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.header-search .header,
+.header-search .search-section {
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    height: 8rem;
+}
+
+.search-section {
+    height: 15rem;
+}
+
+.content {
+    height: calc(100% - 10rem - 20rem - 15rem);
+}
+
+.footer {
+    height: 15rem;
+}
+
+.cyan-background {
+    background-color: rgb(25, 170, 227);
+}
+
+.low-height {
+    height: 8rem !important;
+}
+
+.header-search::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: repeating-linear-gradient(45deg,
+            rgb(25, 170, 227),
+            rgb(131, 215, 216),
+            rgb(77, 136, 134),
+            rgb(25, 170, 227),
+            rgb(131, 215, 216),
+            rgb(77, 136, 134));
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30.15rem;
+}

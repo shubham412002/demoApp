@@ -1,0 +1,28 @@
+<div class="user-profile-container">
+  <h1 class="profile-title">Profile</h1>
+  <div class="profile-content">
+    <div class="profile-image-section">
+      <img [src]="user?.photo || '../../assets/images/user.jpg'" alt="Profile Picture" class="profile-image" />
+      <div class="btn-container">
+        <button class="btn edit-photo-btn" (click)="changeProfilePhoto()">Edit Photo</button>
+        <input type="file" id="fileInput1" accept="image/*" (change)="uploadPhoto($event)" style="display: none;">
+        <button class="btn edit-profile-btn" (click)="openProfileDialod()">Edit Profile</button>
+      </div>
+    </div>
+    <div class="profile-info-section">
+      <p class="profile-description">
+        I’m {{ user?.firstName }} {{ user?.lastName }} and I'm above {{ user?.age }} years and you can send your emails to 
+        <a href="mailto:{{ user?.email }}" class="link">{{ user?.email }}</a>. 
+        I live in the state of {{ getStateName(user?.state)  }}. <span *ngIf="user?.tags?.length">I like to 
+        <ng-container *ngFor="let tag of user?.tags; let i = index">
+          {{ tag }}<span *ngIf="i < user.tags.length - 1">, </span>
+        </ng-container>
+        </span>. 
+        <span *ngIf="user?.subscribe">And please send me newsletters. </span>
+        Please reach out to me on my phone number 
+        <a class="link" [href]="'tel:' + user?.phone">{{ user?.phone }}</a>.
+      </p>
+      <button class="btn agree-btn" (click)="agreeBtn()">I Agree</button>
+    </div>
+  </div>
+</div>

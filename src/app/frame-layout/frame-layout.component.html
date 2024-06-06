@@ -1,0 +1,14 @@
+<div class="frame-container full-height full-width">
+  <div class="header-search" [ngClass]="lowHeaderHeight">
+    <div class="header" [ngClass]="headerClass">
+      <app-header></app-header>
+    </div>
+    <div class="search-section" *ngIf="showSearchSection">
+      <app-search-section></app-search-section>
+    </div>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>
